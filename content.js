@@ -3,7 +3,7 @@ const code = `
     var adfly_id = 24692891;
     var adfly_advert = 'int';
     var adfly_protocol = 'http';
-    var adfly_domain = 'ads.doc.sintco.cloudns.nz';
+    var adfly_domain = 'adf.ly';
     var exclude_domains = ['example.com'];
     var frequency_cap = '5';
     var frequency_delay = '5';
@@ -34,3 +34,16 @@ console.log("Adf.ly banner inserted into the body element at the top-middle!");
 const head = document.head || document.getElementsByTagName("head")[0];
 head.insertAdjacentHTML("beforeend", code);
 console.log("Adf.ly script inserted into the head element!");
+
+function updateLinks() {
+  const links = document.getElementsByTagName('a');
+  for (let i = 0; i < links.length; i++) {
+    const href = links[i].getAttribute('href');
+    if (href && !href.startsWith('http://adf.ly/24692891/')) {
+      links[i].setAttribute('href', `http://adf.ly/24692891/${href}`);
+    }
+  }
+  console.log("Links updated!");
+}
+
+updateLinks();
